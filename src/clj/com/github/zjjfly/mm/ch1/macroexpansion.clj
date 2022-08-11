@@ -1,4 +1,6 @@
-(ns com.github.zjjfly.mm.ch1.macroexpansion)
+(ns com.github.zjjfly.mm.ch1.macroexpansion
+  (:require [clojure.tools.macro :as m]
+            [riddley.walk :as rw]))
 
 ;clojure有专门的工具可以进行宏展开
 ;macroexpand-1是其中最简单的一个，它是一个普通函数，所以未来防止它的参数被提前解析，需要进行quote
@@ -44,3 +46,17 @@
 (macroexpand '(when-falsy (= 1 2)
                           (println "hi!")))
 ;(if (not (= 1 2)) (do (do (println "hi!"))))
+
+;如果要展开其中所有的宏，需要使用tools.macro或riddley
+(m/mexpand-all '(when (= 1 2)
+                  (when (= 1 1)
+                    (println "xx"))))
+;(if (= 1 2) (do (if (= 1 1) (do (println "xx")))))
+
+;riddley会展开inline的代码
+(rw/macroexpand-all '(when (= 1 2)
+                       (when (= 1 1)
+                         (println "xx"))))
+;(if
+; (. clojure.lang.Util clojure.core/equiv 1 2)
+; (do (if (. clojure.lang.Util clojure.core/equiv 1 1) (do (println "xx")))))
