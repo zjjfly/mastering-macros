@@ -1,8 +1,15 @@
 {:paths   ["src/clj" "src/java" "src/resources" "target/classes"]
  :deps    {org.clojure/clojure     {:mvn/version "1.11.1"}
            org.clojure/tools.macro {:mvn/version "0.1.5"}
-           riddley/riddley {:mvn/version "0.2.0"}}
+           riddley/riddley         {:mvn/version "0.2.0"}
+           criterium/criterium          {:mvn/version "0.4.6"}
+           prismatic/hiphip {:mvn/version "0.2.1"}
+           }
  :aliases {:build {:extra-paths ["build"]
                    :extra-deps  {io.github.clojure/tools.build {:git/tag "v0.6.2" :git/sha "226fb52"}}
-                   :ns-default  build}}
+                   :ns-default  build}
+           :jmh   {:extra-paths ["classes"]
+                   :extra-deps  {jmh-clojure/task {:mvn/version "0.1.1"}}
+                   :ns-default  jmh.task
+                   :exec-fn     jmh.task/run}}
  }

@@ -1,0 +1,45 @@
+{
+ :benchmarks
+ [{:name :reflection, :fn com.github.zjjfly.mm.ch5.demo/length1, :args [:state/string]}
+  {:name :no-reflection, :fn com.github.zjjfly.mm.ch5.demo/length2, :args [:state/string]}]
+
+ :options
+ ;; Option keywords. Selectively enabled in specific :benchmarks. The
+ ;; special keyword :jmh/default gives the defaults for all benchmarks.
+ ;;
+ ;; Time units may be specified as a short or long keyword. For example,
+ ;; :ns, :nanoseconds; :us, :microseconds.
+ {
+  :jmh/default
+  {
+   :group              :A                                   ;; Thread group name. Specify thread count via :threads.
+   :mode               :average                             ;; Defaults to :throughput. May also be a sequence, or :all.
+   :ops-per-invocation 10                                   ;; The amount of logical "operations" per call.
+   :output-time-unit   :ns                                 ;; Report results using the following time unit.
+   :threads            3                                    ;; Worker threads to use for each iteration.
+   :timeout            [500 :ms]                            ;; Interrupt the worker thread if the run exceeds this maximum.
+
+   :fork                                                    ;; Give a number instead of a map to specify only the :count.
+   {
+    :count   3                                              ;; The number of forks. If 0, disable forking.
+    :warmups 1                                              ;; The number of warmup forks that ignore results.
+    :jvm                                                    ;; Modify the java subprocess that is forked.
+    {
+     :args         ["-Xmx512m"]                             ;; Override the jvm parent process args.
+     :java         "/usr/bin/java"                          ;; The path to the java executable.
+     :prepend-args ["-cp" ".:lib"]                          ;; Prepend these to the process args.
+     :append-args  ["-ea"]}}                                ;; Append these to the process args.
+
+   :measurement                                             ;; Give a number to specify only the :iterations.
+   {
+    :count      50                                          ;; fn calls per iteration. Some modes ignore this option.
+    :iterations 5                                           ;; Total measurements to do.
+    :time       [10 :us]}                                   ;; Minimum time for each measurement.
+
+   :warmup                                                  ;; Same as :measurement, but for warmup benchmarks only.
+   {:time [20 :seconds]}}}
+
+ :states
+ {:string {:fn jmh.sample/random-bytes :args [:size]}}
+
+ :params {:size 42}}

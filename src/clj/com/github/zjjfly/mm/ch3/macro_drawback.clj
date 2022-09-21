@@ -21,7 +21,7 @@
 (comment
   (map #(do-multiplication %) ['(+ 3 4) '(- 2 3)])
   ;Don't know how to create ISeq from: clojure.lang.Symbol
-  ;报错的原因使，macro是在编译时展开的，它不会知道在运行时传入匿名函数的是数字还是一个list
+  ;报错的原因是，macro是在编译时展开的，它不会知道在运行时传入匿名函数的是数字还是一个list
   )
 ;实际上也是有办法把macro当做函数使用的，只需要对其进行deref
 (@#'square nil nil 9)                                       ;第一、二个参数是&form和&env
@@ -110,3 +110,6 @@
 (my-and-fixed (do (println "hi there") (= 1 2)) (= 3 4))
 ;hi there
 ;=> false
+
+;在ClojureScript中，macro会先在JVM中展开，之后才在js引擎中执行
+;所以有时候js引擎无法做到的事情也可以通过把这些操作放到macro来实现，虽然这样做太magic了
