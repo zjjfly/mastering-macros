@@ -2,8 +2,11 @@
  :deps    {org.clojure/clojure     {:mvn/version "1.11.1"}
            org.clojure/tools.macro {:mvn/version "0.1.5"}
            riddley/riddley         {:mvn/version "0.2.0"}
-           criterium/criterium          {:mvn/version "0.4.6"}
-           prismatic/hiphip {:mvn/version "0.2.1"}
+           criterium/criterium     {:mvn/version "0.4.6"}
+           prismatic/hiphip        {:mvn/version "0.2.1"}
+           speclj/speclj           {:mvn/version "3.4.1"}
+           org.clojure/core.match  {:mvn/version "1.0.0"}
+           n01se/seqex             {:mvn/version "2.0.2"}
            }
  :aliases {:build {:extra-paths ["build"]
                    :extra-deps  {io.github.clojure/tools.build {:git/tag "v0.6.2" :git/sha "226fb52"}}
