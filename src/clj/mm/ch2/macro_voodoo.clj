@@ -1,4 +1,4 @@
-(ns com.github.zjjfly.mm.ch2.macro-voodoo
+(ns mm.ch2.macro-voodoo
   (:require [clojure.pprint :as pp]))
 
 ;clojure的macro中有两个默认的值：&env，&from

@@ -1,4 +1,4 @@
-(ns com.github.zjjfly.mm.ch4.cleanup-resource
+(ns mm.ch4.cleanup-resource
   (:import (java.io FileInputStream)))
 
 ;macro的还有一个作用是进行资源的清理，如关闭文件和输入输出流等

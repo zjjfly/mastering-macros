@@ -1,4 +1,4 @@
-(ns com.github.zjjfly.mm.ch8.pattern-matching
+(ns mm.ch8.pattern-matching
   (:require [clojure.core.match :as cm]
             [speclj.core :as spec]))
 

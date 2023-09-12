@@ -1,4 +1,4 @@
-(ns com.github.zjjfly.mm.ch2.advanced-macro)
+(ns mm.ch2.advanced-macro)
 
 ;使用到目前为止的所学，来实现一个assert
 (defmacro my-assert [x]
@@ -73,11 +73,11 @@
     (:refer-clojure :exclude [map]))
   (in-ns 'foo)
   (def map {:a 1 :b 2})
-  (com.github.zjjfly.mm.ch2.advanced-macro/squares [1 2 3])
+  (mm.ch2.advanced-macro/squares [1 2 3])
   ;[1 2 3]
   ;因为map解析为了一个map而不是函数，所以map的第一个函数参数变成了要查找的key，第二个参数变成了找不到key的时候返回的默认值
   )
-(in-ns 'com.github.zjjfly.mm.ch2.advanced-macro)
+(in-ns 'mm.ch2.advanced-macro)
 ;使用syntax-quote实现这个宏
 (defmacro squares
   [xs]
@@ -89,7 +89,7 @@
     (:refer-clojure :exclude [map]))
   (in-ns 'foo)
   (def map {:a 1 :b 2})
-  (com.github.zjjfly.mm.ch2.advanced-macro/squares [1 2 3])
+  (mm.ch2.advanced-macro/squares [1 2 3])
   ;(1 4 9)
   )
 
@@ -99,7 +99,7 @@
 (comment
   (squares (range 10))
   ;failed: Extra input at: [:fn-tail :arity-1 :params] spec: :clojure.core.specs.alpha/param-list
-  ;com.github.zjjfly.mm.ch2.advanced-macro/x
+  ;mm.ch2.advanced-macro/x
   ;原因是因为fn的参数x加上了namespace，而当前的namespace是没有x这个var的
   )
 ;可以使用~'来防止syntax-quote加上namespace

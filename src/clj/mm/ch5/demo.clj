@@ -1,4 +1,4 @@
-(ns com.github.zjjfly.mm.ch5.demo)
+(ns mm.ch5.demo)
 
 (defn length1 [x] (alength x))
 

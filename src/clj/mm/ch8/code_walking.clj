@@ -1,7 +1,8 @@
-(ns com.github.zjjfly.mm.ch8.code-walking
+(ns mm.ch8.code-walking
   (:require [clojure.java.io :as jio]
             [clojure.walk :as cw]
-            [riddley.walk :as rw])
+            [riddley.walk :as rw]
+            [clojure.repl :as repl])
   (:import (java.io IOException)))
 
 ;ruby中允许任何方法，类型或模块定义作为一个隐式的begin（类似Java的try）
@@ -47,7 +48,7 @@
 ;(malkovich malkovich malkovich)
 
 ;还要考虑special form的情况
-(clojure.repl/source special-symbol?)
+(repl/source special-symbol?)
 ;(defn special-symbol?
 ;  "Returns true if s names a special form"
 ;  {:added "1.0"

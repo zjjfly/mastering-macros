@@ -1,4 +1,4 @@
-(ns com.github.zjjfly.mm.ch7.threading
+(ns mm.ch7.threading
   (:import (clojure.lang ISeq)))
 
 ;Clojure中很常用的一个macro是->，它可以把多重嵌套的表达式变成一连串表达式的pipeline，这可以大大增加可读性

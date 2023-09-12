@@ -1,4 +1,4 @@
-(ns com.github.zjjfly.mm.ch5.performance-opt
+(ns mm.ch5.performance-opt
   (:require [criterium.core :as cc]
             [hiphip.int :as hi]
             ))

@@ -1,4 +1,4 @@
-(ns com.github.zjjfly.mm.ch2.macro-hygiene)
+(ns mm.ch2.macro-hygiene)
 
 ;宏卫生问题，指的是在宏中把在调用宏的表达式中使用的一些symbol覆盖率，使其指向了别的值
 ;例子：

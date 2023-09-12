@@ -1,4 +1,4 @@
-(ns com.github.zjjfly.mm.ch1.basics)
+(ns mm.ch1.basics)
 
 ;clojure中的代码即数据，这使得macro成为了可能
 

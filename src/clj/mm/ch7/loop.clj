@@ -1,4 +1,4 @@
-(ns com.github.zjjfly.mm.ch7.loop)
+(ns mm.ch7.loop)
 
 (defmacro my-while
   [test & body]

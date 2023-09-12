@@ -1,4 +1,4 @@
-(ns com.github.zjjfly.mm.ch4.code-wrapper
+(ns mm.ch4.code-wrapper
   (:require [clojure.java.io :as io])
   (:import (java.io File)
            (java.text SimpleDateFormat)

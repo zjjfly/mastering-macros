@@ -1,4 +1,4 @@
-(ns com.github.zjjfly.mm.ch4.eval-in-context)
+(ns mm.ch4.eval-in-context)
 
 ;macro可以决定要怎么解析或是否解析传入的表达式
 

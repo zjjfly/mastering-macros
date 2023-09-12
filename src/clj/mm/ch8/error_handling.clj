@@ -1,7 +1,8 @@
-(ns com.github.zjjfly.mm.ch8.error-handling
+(ns mm.ch8.error-handling
   (:require [clojure.tools.macro :as m]
-            [com.github.zjjfly.mm.ch8.pattern-matching :as pm]
-            [n01se.syntax.repl :as syntax]))
+            [mm.ch8.pattern-matching :as pm]
+            [n01se.syntax.repl :as syntax]
+            [clojure.repl :as repl]))
 
 ;为了提供macro给其他用户使用，并尽量的用户友好，需要为macro写doc，并提供容易理解的错误信息
 ;以之前实现的模式匹配为例来演示如何改善错误信息
@@ -48,9 +49,9 @@
                (vary-meta name assoc :doc (default-docstring name)))]
     `(defn ~name ~@args)))
 (my-defn foo [])
-(clojure.repl/doc foo)
+(repl/doc foo)
 ;-------------------------
-;com.github.zjjfly.mm.ch8.error-handling/foo
+;mm.ch8.error-handling/foo
 ;([])
 ;  The author carelessly forgot to provide a docstring for `foo`. Sorry!
 
@@ -96,7 +97,7 @@
 ;   and__5579__auto__
 ;   (clojure.core/every?
 ;    clojure.core/identity
-;    (clojure.core/map com.github.zjjfly.mm.ch8.pattern-matching/match-item? (quote [0 y]) [0 1]))
+;    (clojure.core/map mm.ch8.pattern-matching/match-item? (quote [0 y]) [0 1]))
 ;   and__5579__auto__))
 ; (let* [y 1] {:axis "Y", :y y})
 ; (if
@@ -106,7 +107,7 @@
 ;    and__5579__auto__
 ;    (clojure.core/every?
 ;     clojure.core/identity
-;     (clojure.core/map com.github.zjjfly.mm.ch8.pattern-matching/match-item? (quote [x 0]) [0 1]))
+;     (clojure.core/map mm.ch8.pattern-matching/match-item? (quote [x 0]) [0 1]))
 ;    and__5579__auto__))
 ;  (let* [x 0] {:axis "X", :x x})
 ;  (if
@@ -116,7 +117,7 @@
 ;     and__5579__auto__
 ;     (clojure.core/every?
 ;      clojure.core/identity
-;      (clojure.core/map com.github.zjjfly.mm.ch8.pattern-matching/match-item? (quote [x y]) [0 1]))
+;      (clojure.core/map mm.ch8.pattern-matching/match-item? (quote [x y]) [0 1]))
 ;     and__5579__auto__))
 ;   (let* [x 0 y 1] {:x x, :y y})
 ;   (if :else (println "hi") nil))))

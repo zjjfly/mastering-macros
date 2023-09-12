@@ -1,4 +1,4 @@
-(ns com.github.zjjfly.mm.ch1.macroexpansion
+(ns mm.ch1.macroexpansion
   (:require [clojure.tools.macro :as m]
             [riddley.walk :as rw]))
 

@@ -1,4 +1,4 @@
-(ns com.github.zjjfly.mm.ch3.macro-drawback
+(ns mm.ch3.macro-drawback
   (:require [clojure.string :as string]))
 
 ;macro的一些缺点
@@ -7,7 +7,7 @@
 (defmacro square [x] `(* ~x ~x))
 (comment
   (map square (range 10))
-  ;Can't take value of a macro: #'com.github.zjjfly.mm.ch3.macro-drawback/square
+  ;Can't take value of a macro: #'mm.ch3.macro-drawback/square
   )
 ;对于这个例子来说，可以用一个匿名函数wrap这个macro
 (map #(square %) (range 10))
@@ -47,7 +47,7 @@
     (apply log messages)
     (send-email admin-user messages)
     (send-email current-user messages))
-  ;Can't take value of a macro: #'com.github.zjjfly.mm.ch3.macro-drawback/log
+  ;Can't take value of a macro: #'mm.ch3.macro-drawback/log
   ;因为macro无法作为值，所以编译不过
   )
 ;使用macro来实现这个函数
@@ -98,7 +98,7 @@
 (macroexpand-1 '(my-and (do (println "hi there") (= 1 2)) (= 3 4)))
 ;(if
 ; (do (println "hi there") (= 1 2))
-; (com.github.zjjfly.mm.ch3.macro-drawback/my-and (= 3 4))
+; (mm.ch3.macro-drawback/my-and (= 3 4))
 ; (do (println "hi there") (= 1 2)))
 ;可以看出，会解析两次这个表达式，这是写macro很容易犯的一个错误
 ;在没有明确需要的情况下，要保证只解析一次传入macro的表达式
